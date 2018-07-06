@@ -1,0 +1,39 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion project.compileSdkVersion
+
+    defaultConfig {
+        applicationId "app.trinea.autoscrollviewpager"
+        minSdkVersion project.minSdkVersion
+        targetSdkVersion project.targetSdkVersion
+        versionCode project.versionCode
+        versionName project.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    testImplementation project.depend_junit
+    androidTestImplementation project.depend_test_runner
+    androidTestImplementation project.depend_test_espresso
+
+    implementation project.depend_support_appCompatV7
+    implementation project.depend_support_constraintLayout
+
+    implementation project(':scrollpager')
+}
